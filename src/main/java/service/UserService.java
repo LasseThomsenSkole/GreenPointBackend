@@ -16,15 +16,17 @@ public class UserService {
     private static final String EXISTING_USERNAME = "UserTest";
     //TODO skal laves om til database
     //dette er en hardcoder bruger
-    public Optional<User> getUserByUsername(String username) {
-        if (! EXISTING_USERNAME.equals(username)) return Optional.empty();
+    public User getUserByUsername(String username) {
+        if (! EXISTING_USERNAME.equals(username)) {
+            throw new UsernameNotFoundException("User not found");
+        }
 
         User user = new User();
         user.setId(1);
         user.setUsername(EXISTING_USERNAME);
         user.setPassword("$2a$12$G20tn3gThoAyHKBp6nJyh.SCUivWS7MN5qtc6AU687vkfiOSiSA9C"); // password: "test"
         user.setRole(Role.USER);
-        return Optional.of(user);
+        return user;
     }
     /*
     public User getUserByUsername(String username) throws UsernameNotFoundException {
