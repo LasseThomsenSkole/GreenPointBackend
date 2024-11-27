@@ -1,4 +1,4 @@
-package service;
+package org.example.greenpointbackend.service;
 
 import lombok.RequiredArgsConstructor;
 
@@ -7,14 +7,12 @@ import org.example.greenpointbackend.security.UserPrincipal;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserService userService;
     @Override

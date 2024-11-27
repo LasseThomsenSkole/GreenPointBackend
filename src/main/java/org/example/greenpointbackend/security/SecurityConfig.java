@@ -2,13 +2,11 @@ package org.example.greenpointbackend.security;
 
 import lombok.RequiredArgsConstructor;
 import org.example.greenpointbackend.model.Role;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -20,7 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import service.CustomUserDetailsService;
+import org.example.greenpointbackend.service.CustomUserDetailsService;
 
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +27,7 @@ import java.util.List;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig {
+
     private final CustomUserDetailsService userDetailsService; // aner ik hvorfor den ikke kan autowire
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
@@ -57,14 +56,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(registry -> registry // alle de her er eksempler på endpoints
                         .requestMatchers("/auth/admin").hasAuthority(Role.ADMIN.name())
                         .requestMatchers("/auth/login", "/auth/register").permitAll()
-                        .requestMatchers("/auth/validate-role").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/movie/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/movie/create-movie").hasAuthority(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.DELETE, "/movie/delete-movie/**").hasAuthority(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.PUT, "/movie/edit-movie/**").hasAuthority(Role.ADMIN.name())
-                        .requestMatchers(HttpMethod.POST, "/showtime/create-showtime/**").hasAuthority(Role.ADMIN.name())
                         .anyRequest().authenticated());
-
         return http.build();
     }
     @Bean
