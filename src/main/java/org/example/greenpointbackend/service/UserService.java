@@ -1,4 +1,4 @@
-package service;
+package org.example.greenpointbackend.service;
 
 import lombok.RequiredArgsConstructor;
 import org.example.greenpointbackend.model.Role;
