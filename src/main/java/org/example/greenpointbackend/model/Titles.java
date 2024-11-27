@@ -1,5 +1,0 @@
-package org.example.greenpointbackend.model;
-
-public enum Titles {
-    IN_STORE_TRAINER, IN_STORE_MERCHANDISE, CONTACT_LENSE_CONSULTANT, OPTICAL_DISPENSER, SALES_ASSISTANT, OPTICIAN
-}
