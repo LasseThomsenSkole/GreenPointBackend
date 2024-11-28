@@ -4,11 +4,11 @@ public class Tags {
 
     private Titles titles;
     private Vision vision;
-    private Brand brand;
+    private Brands brands;
     private Info info;
     private Health health;
     private ExternalPatners externPartners;
-    private Alle alle;
+    private All all;
 
 }
 
@@ -19,30 +19,30 @@ enum Titles {
 }
 
 enum Vision {
-    GLAS, LINSER, STEL, DYKKEBRILLER, SIKKERHEDSBRILLER,
-    HÅRDE_LINSER, BLØDE_LINSER, VÆSKER
+    GLASSES, LENSES, FRAMES, DIVING_GOGGLES, SAFETY_GOGGLES,
+    HARD_LENSES, SOFT_LENSES, LIQUIDS
 }
 
-enum Brand {
+enum Brands {
 ALCON, COOPER, COOPERVISION, JNJ, JOHNSONJOHNSON, ADARO
 }
 
 enum Info {
-    AFBESTILLING, BESTILLING, KUNDE, KUNDEVEJEN, HQ,
-    KAMPAGNE, HJÆLP, IT, PRINTER, TELEFON
+    RE_ORDER, ORDER, CUSTOMER, CUSTOMERPATH, HQ,
+    KAMPAGNE, HELP, IT, PRINTER, TELEPHONE
 }
 
 enum Health{
-    KOMMUNE, KENNEDY_CENTRET, KOMMUNIKATIONSCENTRET,
-    ØJENLÆGE, FUNDUS, SUNDHED
+    MUNICIPALITY, KENNEDY_CENTER, COMMUNICATIONSCENTER,
+    EYE_DOCTOR, FUNDUS, HEALTH_SECTOR
 }
 
 enum ExternalPatners {
-    DHL, DAO, SCALEPOINT, FORSIKRING, BANK,
+    DHL, DAO, SCALEPOINT, INSURANCE, BANK,
     RESURS_BANK, EXPRESS_BANK,
-    PRODUKT
+    PRODUCT
 }
 
-enum Alle {
-    ALLE
+enum All {
+    ALL
 }
