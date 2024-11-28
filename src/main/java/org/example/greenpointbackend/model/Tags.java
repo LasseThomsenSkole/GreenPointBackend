@@ -1,13 +1,46 @@
 package org.example.greenpointbackend.model;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Entity
+@Setter
+@Getter
+@NoArgsConstructor
 public class Tags {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Titles titles;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Vision vision;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Brands brands;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Info info;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Health health;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private ExternalPatners externPartners;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private All all;
 
 }
