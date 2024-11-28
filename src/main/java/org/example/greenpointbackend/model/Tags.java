@@ -1,34 +1,48 @@
 package org.example.greenpointbackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Entity
-@Setter
-@Getter
-@NoArgsConstructor
 public class Tags {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String tags;
-
-
-
+    private Titles titles;
+    private Vision vision;
+    private Brand brand;
+    private Info info;
+    private Health health;
+    private ExternalPatners externPartners;
+    private Alle alle;
 
 }
 
 enum Titles {
-    IN_STORE_TRAINER, IN_STORE_MERCHANDISE, CONTACT_LENSE_CONSULTANT, OPTICAL_DISPENSER, SALES_ASSISTANT, OPTICIAN
+    IN_STORE_TRAINER, IN_STORE_MERCHANDISE, CONTACT_LENSE_CONSULTANT,
+    OPTICAL_DISPENSER, SALES_ASSISTANT, OPTICIAN,
+    CL, KD, CLC, IST, ISM, OD
 }
- enum Filter {
-    IN_STORE_TRAINER, IN_STORE_MERCHANDISE, CONTACT_LENSE_CONSULTANT, OPTICAL_DISPENSER, SALES_ASSISTANT, OPTICIAN,CL, KD, CLC, IST, ISM, OD,
-    GLAS, LINSER, AFBETALING, STEL, DYKKERBRILLER, SIKKERHEDSBRILLER, HÅRDE_LINSER,BLØDE_LINSER, VÆSKER, ALCON, COPPER, WOOPERVISION, JNJ, JOHNSONJOHNSON,
-    BESTILLING, KUNDE, KUNDEVEJEN, HQ, KAMPAGNE, ADARO, DHL, DAO, SCALEPOINT, FORSIKRING, BANK, RESURS_BANK, EXPRESS_BANK, HJÆLP, IT, PRINTER, TELEFON,
-    PRODUKT, KOMMUNE, KENNEDY_CENTRET, KOMMUNIKATIONSCENTRET, ØJENLÆGE, FUNDUS, SUNDHED, ALLE
+
+enum Vision {
+    GLAS, LINSER, STEL, DYKKEBRILLER, SIKKERHEDSBRILLER,
+    HÅRDE_LINSER, BLØDE_LINSER, VÆSKER
+}
+
+enum Brand {
+ALCON, COOPER, COOPERVISION, JNJ, JOHNSONJOHNSON, ADARO
+}
+
+enum Info {
+    AFBESTILLING, BESTILLING, KUNDE, KUNDEVEJEN, HQ,
+    KAMPAGNE, HJÆLP, IT, PRINTER, TELEFON
+}
+
+enum Health{
+    KOMMUNE, KENNEDY_CENTRET, KOMMUNIKATIONSCENTRET,
+    ØJENLÆGE, FUNDUS, SUNDHED
+}
+
+enum ExternalPatners {
+    DHL, DAO, SCALEPOINT, FORSIKRING, BANK,
+    RESURS_BANK, EXPRESS_BANK,
+    PRODUKT
+}
+
+enum Alle {
+    ALLE
 }
