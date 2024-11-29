@@ -1,9 +1,6 @@
 package org.example.greenpointbackend.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,19 +13,69 @@ public class Tags {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String tags;
+    private int id;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Titles titles;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Vision vision;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Brands brands;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Info info;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Health health;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ExternalPatners externPartners;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private All all;
 
 }
 
 enum Titles {
-    IN_STORE_TRAINER, IN_STORE_MERCHANDISE, CONTACT_LENSE_CONSULTANT, OPTICAL_DISPENSER, SALES_ASSISTANT, OPTICIAN
+    IN_STORE_TRAINER, IN_STORE_MERCHANDISE, CONTACT_LENSE_CONSULTANT,
+    OPTICAL_DISPENSER, SALES_ASSISTANT, OPTICIAN,
+    CL, KD, CLC, IST, ISM, OD
 }
- enum Filter {
-    IN_STORE_TRAINER, IN_STORE_MERCHANDISE, CONTACT_LENSE_CONSULTANT, OPTICAL_DISPENSER, SALES_ASSISTANT, OPTICIAN,CL, KD, CLC, IST, ISM, OD,
-    GLAS, LINSER, AFBETALING, STEL, DYKKERBRILLER, SIKKERHEDSBRILLER, HÅRDE_LINSER,BLØDE_LINSER, VÆSKER, ALCON, COPPER, WOOPERVISION, JNJ, JOHNSONJOHNSON,
-    BESTILLING, KUNDE, KUNDEVEJEN, HQ, KAMPAGNE, ADARO, DHL, DAO, SCALEPOINT, FORSIKRING, BANK, RESURS_BANK, EXPRESS_BANK, HJÆLP, IT, PRINTER, TELEFON,
-    PRODUKT, KOMMUNE, KENNEDY_CENTRET, KOMMUNIKATIONSCENTRET, ØJENLÆGE, FUNDUS, SUNDHED, ALLE
+
+enum Vision {
+    GLASSES, LENSES, FRAMES, DIVING_GOGGLES, SAFETY_GOGGLES,
+    HARD_LENSES, SOFT_LENSES, LIQUIDS
+}
+
+enum Brands {
+ALCON, COOPER, COOPERVISION, JNJ, JOHNSONJOHNSON, ADARO
+}
+
+enum Info {
+    RE_ORDER, ORDER, CUSTOMER, CUSTOMERPATH, HQ,
+    KAMPAGNE, HELP, IT, PRINTER, TELEPHONE
+}
+
+enum Health{
+    MUNICIPALITY, KENNEDY_CENTER, COMMUNICATIONSCENTER,
+    EYE_DOCTOR, FUNDUS, HEALTH_SECTOR
+}
+
+enum ExternalPatners {
+    DHL, DAO, SCALEPOINT, INSURANCE, BANK,
+    RESURS_BANK, EXPRESS_BANK,
+    PRODUCT
+}
+
+enum All {
+    ALL
 }

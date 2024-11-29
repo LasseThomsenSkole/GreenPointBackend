@@ -4,6 +4,8 @@ package org.example.greenpointbackend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Set;
+
 @Entity
 @Data
 @Getter
@@ -24,4 +26,14 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Titles titles;
+
+    @Column(nullable = false)
+    private int storeId;
+
+    @ManyToMany(mappedBy = "users")
+    private Set<Course> courses;
 }
