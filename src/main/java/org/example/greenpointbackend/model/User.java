@@ -3,6 +3,8 @@ package org.example.greenpointbackend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.greenpointbackend.model.Enums.Role;
+import org.example.greenpointbackend.model.Enums.Title;
 
 import java.util.Set;
 
@@ -29,7 +31,7 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Titles titles;
+    private Title title; //todo skal være liste hvis der skal være flere
 
     @Column(nullable = false)
     private int storeId;

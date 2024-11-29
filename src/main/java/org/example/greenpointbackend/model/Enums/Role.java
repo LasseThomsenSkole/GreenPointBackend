@@ -1,4 +1,4 @@
-package org.example.greenpointbackend.model;
+package org.example.greenpointbackend.model.Enums;
 
 public enum Role {
     USER,

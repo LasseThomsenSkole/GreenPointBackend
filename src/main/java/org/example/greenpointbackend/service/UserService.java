@@ -1,13 +1,11 @@
 package org.example.greenpointbackend.service;
 
 import lombok.RequiredArgsConstructor;
-import org.example.greenpointbackend.model.Role;
+import org.example.greenpointbackend.model.Enums.Role;
 import org.example.greenpointbackend.repository.UserRepository;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.example.greenpointbackend.model.User;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

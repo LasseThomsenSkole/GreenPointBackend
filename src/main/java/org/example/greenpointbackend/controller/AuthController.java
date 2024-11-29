@@ -1,6 +1,6 @@
 package org.example.greenpointbackend.controller;
 
-import org.example.greenpointbackend.model.Role;
+import org.example.greenpointbackend.model.Enums.Role;
 import org.example.greenpointbackend.security.AuthenticationRequest;
 import org.example.greenpointbackend.model.User;
 import org.example.greenpointbackend.repository.UserRepository;
