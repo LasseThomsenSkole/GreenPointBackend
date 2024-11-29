@@ -3,6 +3,7 @@ package org.example.greenpointbackend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -23,5 +24,5 @@ public class News {
     private String description;
 
     @Column(nullable = false)
-    private Date date;
+    private LocalDate date;
 }

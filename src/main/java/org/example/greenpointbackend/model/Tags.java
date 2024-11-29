@@ -12,7 +12,7 @@ import org.example.greenpointbackend.model.Enums.Vision;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Tags {
+public class Tags { //todo hvorfor er det her en klasse og ikke en enum?
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
