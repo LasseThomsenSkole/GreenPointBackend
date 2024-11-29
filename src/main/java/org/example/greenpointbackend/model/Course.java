@@ -3,9 +3,8 @@ package org.example.greenpointbackend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Set;
 
 @Entity
 @Data
@@ -25,7 +24,7 @@ public class Course {
     private String description;
 
     @Column(nullable = false)
-    private Date date;
+    private LocalDate date;
 
     @Column(nullable = false)
     private LocalDateTime startTime;
@@ -37,11 +36,4 @@ public class Course {
     private String location;
 
 
-    /*public Set<User> getUsers(){
-        return users;
-    }
-
-    public void setUsers(Set<User> users){
-        this.users = users;
-    }*/
 }
