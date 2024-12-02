@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.greenpointbackend.model.Enums.Title;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -19,12 +20,14 @@ public class UserPrincipal implements UserDetails {
     private int id;
     private String username;
     private String password;
+    private Title title;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserPrincipal(int id,String username, String password, Collection<? extends GrantedAuthority> authorities) {
+    public UserPrincipal(int id,String username, String password, Title title, Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.password = password;
+        this.title = title;
         this.authorities = authorities;
     }
 
