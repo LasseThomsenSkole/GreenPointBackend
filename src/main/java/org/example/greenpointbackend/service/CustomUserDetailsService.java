@@ -24,6 +24,7 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .username(user.getUsername())
                 .password(user.getPassword())
                 .authorities(List.of(new SimpleGrantedAuthority(user.getRole().name()))) // Use the enum's name
+                .title(user.getTitle())
                 .build();
     }
 }
