@@ -26,7 +26,7 @@ public class User {
     private String name;
 
     @Column(nullable = false, length = 50)
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(nullable = false, length = 60)
     private String password;
@@ -42,6 +42,6 @@ public class User {
     @Column(nullable = false)
     private int storeId;
 
-    @ManyToMany(mappedBy = "users")
-    private Set<Course> courses;
+    /*@ManyToMany(mappedBy = "users")
+    private Set<Course> courses;*/
 }
