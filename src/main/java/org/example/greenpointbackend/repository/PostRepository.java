@@ -1,5 +1,6 @@
 package org.example.greenpointbackend.repository;
 
+import org.example.greenpointbackend.model.Enums.JobTitle;
 import org.example.greenpointbackend.model.Post;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +20,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     Page<Post> searchNews(@Param("keyword") String keyword,
                           Pageable pageable);
 
-    List<Post> findNewsByRole(String role);
+    List<Post> findNewsByJobTitle(JobTitle jobTitle);
 }
 
