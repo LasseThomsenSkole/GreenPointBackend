@@ -25,4 +25,7 @@ public class News {
 
     @Column(nullable = false)
     private LocalDate date;
+
+    @Column(nullable = false)
+    private String role;
 }

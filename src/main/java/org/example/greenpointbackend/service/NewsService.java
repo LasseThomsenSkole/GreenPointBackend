@@ -8,18 +8,22 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class NewsService {
-    private final NewsRepository newsRepository;
+    private NewsRepository newsRepository;
 
-    public NewsService(NewsRepository newsRepository) {
+    public NewsService() {
         this.newsRepository = newsRepository;
     }
 
     public Page<News> searchNews(String keyword, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
         return newsRepository.searchNews(keyword, pageable);
+    }
+
+    public List<News> findNewsByRole(String role){
+        return newsRepository.findNewsByRole(role);
     }
 }

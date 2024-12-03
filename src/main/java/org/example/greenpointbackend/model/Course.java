@@ -35,5 +35,8 @@ public class Course {
     @Column(nullable = false)
     private String location;
 
+    @Column(nullable = false)
+    private String role;
+
 
 }

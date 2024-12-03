@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 @Repository
 public interface NewsRepository extends JpaRepository<News, Integer> {
@@ -18,5 +20,7 @@ public interface NewsRepository extends JpaRepository<News, Integer> {
             "AND (:endDate IS NULL OR n.date <= :endDate)")
     Page<News> searchNews(@Param("keyword") String keyword,
                           Pageable pageable);
+
+    List<News> findNewsByRole(String role);
 }
 
