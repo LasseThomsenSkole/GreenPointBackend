@@ -14,22 +14,23 @@ public class UserService {
     private final UserRepository userRepository;
     private static final String EXISTING_USERNAME = "UserTest";
     //TODO skal laves om til database
-    //dette er en hardcoder bruger
-    public User getUserByUsername(String username) {
+    //dette er en hardcodet bruger
+    public User getUserByEmailHardcoded(String username) {
         if (! EXISTING_USERNAME.equals(username)) {
             throw new UsernameNotFoundException("User not found");
         }
 
         User user = new User();
         user.setId(1);
-        user.setUsername(EXISTING_USERNAME);
+        user.setEmail(EXISTING_USERNAME);
         user.setPassword("$2a$12$G20tn3gThoAyHKBp6nJyh.SCUivWS7MN5qtc6AU687vkfiOSiSA9C"); // password: "test"
         user.setRole(Role.USER);
         user.setJobTitle(JobTitle.IN_STORE_TRAINER);
         return user;
     }
-    /*
-    public User getUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByUsername(username);
-    }*/
+
+    public User getUserByEmail(String email) throws UsernameNotFoundException {
+        return userRepository.findByEmail(email);
+    }
+
 }

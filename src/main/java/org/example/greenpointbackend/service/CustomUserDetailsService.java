@@ -16,12 +16,12 @@ import java.util.List;
 public class CustomUserDetailsService implements UserDetailsService {
     private final UserService userService;
     @Override
-    public UserPrincipal loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.getUserByUsername(username);
+    public UserPrincipal loadUserByUsername(String email) throws UsernameNotFoundException {
+        User user = userService.getUserByEmail(email);
 
         return UserPrincipal.builder()
                 .id(user.getId())
-                .username(user.getUsername())
+                .username(user.getEmail())
                 .password(user.getPassword())
                 .authorities(List.of(new SimpleGrantedAuthority(user.getRole().name()))) // Use the enum's name
                 .jobTitle(user.getJobTitle())
