@@ -15,9 +15,7 @@ import java.util.List;
 public interface PostRepository extends JpaRepository<Post, Integer> {
     @Query("SELECT p FROM Post p WHERE " +
             "(LOWER(p.title) LIKE LOWER(CONCAT('%', :keyword, '%')) " +
-            "OR LOWER(p.description) LIKE LOWER(CONCAT('%', :keyword, '%'))) " +
-            "AND (:startDate IS NULL OR p.date >= :startDate) " +
-            "AND (:endDate IS NULL OR p.date <= :endDate)")
+            "OR LOWER(p.description) LIKE LOWER(CONCAT('%', :keyword, '%'))) ")
     Page<Post> searchNews(@Param("keyword") String keyword,
                           Pageable pageable);
 
