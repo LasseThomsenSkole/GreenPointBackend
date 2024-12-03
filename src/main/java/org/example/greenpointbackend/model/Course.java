@@ -2,6 +2,7 @@ package org.example.greenpointbackend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.greenpointbackend.model.Enums.JobTitle;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -35,8 +36,9 @@ public class Course {
     @Column(nullable = false)
     private String location;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String role;
+    private JobTitle jobTitle;
 
 
 }
