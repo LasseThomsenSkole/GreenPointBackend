@@ -53,7 +53,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
-        if (userRepository.findByUsername(user.getUsername()) != null) return ResponseEntity.badRequest()
+        if (userRepository.findByEmail(user.getEmail()) != null) return ResponseEntity.badRequest()
                 .body("User already exists");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
