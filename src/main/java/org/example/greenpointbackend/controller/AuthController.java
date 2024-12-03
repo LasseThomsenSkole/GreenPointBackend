@@ -46,9 +46,10 @@ public class AuthController {
     private JwtUtil jwtUtil;
 
     @Autowired
-    PostService postService;
+    private PostService postService;
 
-    @Autowired CourseService courseService;
+    @Autowired
+    private CourseService courseService;
 
 
     @PostMapping("/register")
