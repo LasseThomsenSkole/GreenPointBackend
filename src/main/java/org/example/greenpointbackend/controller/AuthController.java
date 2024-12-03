@@ -2,6 +2,7 @@ package org.example.greenpointbackend.controller;
 
 import org.example.greenpointbackend.model.Course;
 import org.example.greenpointbackend.model.Enums.Role;
+import org.example.greenpointbackend.model.Enums.Title;
 import org.example.greenpointbackend.model.Post;
 import org.example.greenpointbackend.security.AuthenticationRequest;
 import org.example.greenpointbackend.model.User;
@@ -57,6 +58,7 @@ public class AuthController {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(Role.ADMIN);
+        user.setTitle(Title.OPTICIAN);
         userRepository.save(user);
         return ResponseEntity.ok("User created");
     }
