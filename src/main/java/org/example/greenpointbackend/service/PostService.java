@@ -1,6 +1,7 @@
 package org.example.greenpointbackend.service;
 
 import lombok.NoArgsConstructor;
+import org.example.greenpointbackend.model.Enums.JobTitle;
 import org.example.greenpointbackend.model.Post;
 import org.example.greenpointbackend.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class PostService {
         return postRepository.searchNews(keyword, pageable);
     }
 
-    public List<Post> findNewsByRole(String role){
-        return postRepository.findNewsByRole(role);
+    public List<Post> findNewsByJobTitle(JobTitle jobTitle){
+        return postRepository.findNewsByJobTitle(jobTitle);
     }
 }
