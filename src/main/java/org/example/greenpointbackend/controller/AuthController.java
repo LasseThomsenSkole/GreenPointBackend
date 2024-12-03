@@ -2,15 +2,14 @@ package org.example.greenpointbackend.controller;
 
 import org.example.greenpointbackend.model.Course;
 import org.example.greenpointbackend.model.Enums.Role;
-import org.example.greenpointbackend.model.News;
-import org.example.greenpointbackend.repository.NewsRepository;
+import org.example.greenpointbackend.model.Post;
 import org.example.greenpointbackend.security.AuthenticationRequest;
 import org.example.greenpointbackend.model.User;
 import org.example.greenpointbackend.repository.UserRepository;
 import org.example.greenpointbackend.security.UserPrincipal;
 import org.example.greenpointbackend.security.JwtUtil;
 import org.example.greenpointbackend.service.CourseService;
-import org.example.greenpointbackend.service.NewsService;
+import org.example.greenpointbackend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -45,7 +44,8 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @Autowired NewsService newsService;
+    @Autowired
+    PostService postService;
 
     @Autowired CourseService courseService;
 
@@ -86,9 +86,9 @@ public class AuthController {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
-        List<News> roleNews = new ArrayList<>();
+        List<Post> roleNews = new ArrayList<>();
         for(String role : roles){
-            roleNews.addAll(newsService.findNewsByRole(role)); //det her virker kun når findnewsbyrole i service er static??
+            roleNews.addAll(postService.findNewsByRole(role)); //det her virker kun når findnewsbyrole i service er static??
         }
 
         List<Map<String, Object>> foundNews = roleNews.stream()
