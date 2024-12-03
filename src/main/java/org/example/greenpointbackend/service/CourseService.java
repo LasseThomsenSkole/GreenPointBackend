@@ -1,6 +1,7 @@
 package org.example.greenpointbackend.service;
 
 import org.example.greenpointbackend.model.Course;
+import org.example.greenpointbackend.model.Enums.JobTitle;
 import org.example.greenpointbackend.repository.CourseRepository;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +12,8 @@ public class CourseService {
     private CourseRepository courseRepository;
 
 
-    public List<Course> findCourseByRole(String role){
-        return courseRepository.findCoursesByRole(role);
+    public List<Course> findCourseByRole(JobTitle jobTitle){
+        return courseRepository.findCoursesByJobTitle(jobTitle);
     }
 
 }
