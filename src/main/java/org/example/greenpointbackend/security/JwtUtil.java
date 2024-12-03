@@ -3,7 +3,7 @@ package org.example.greenpointbackend.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.example.greenpointbackend.model.Enums.Title;
+import org.example.greenpointbackend.model.Enums.JobTitle;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -48,7 +48,7 @@ public class JwtUtil {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList()));
         claims.put("userId", userPrincipal.getId());
-        claims.put("Title", userPrincipal.getTitle());
+        claims.put("Title", userPrincipal.getJobTitle());
         return createToken(claims, userPrincipal.getUsername());
     }
 
@@ -70,7 +70,7 @@ public class JwtUtil {
     public UserPrincipal jwtToUserPrincipal(Claims claims) {
         String username = claims.getSubject();
         List<String> roles = (List<String>) claims.get("roles");
-        Title title = (Title) claims.get("Title");
+        JobTitle jobTitle = (JobTitle) claims.get("Title");
 
         List<GrantedAuthority> authorities = roles.stream()
                 .map(SimpleGrantedAuthority::new)
@@ -79,7 +79,7 @@ public class JwtUtil {
         return UserPrincipal.builder()
                 .username(username)
                 .authorities(authorities)
-                .title(title)
+                .jobTitle(jobTitle)
                 .build();
     }
 

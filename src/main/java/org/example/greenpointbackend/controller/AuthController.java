@@ -2,7 +2,7 @@ package org.example.greenpointbackend.controller;
 
 import org.example.greenpointbackend.model.Course;
 import org.example.greenpointbackend.model.Enums.Role;
-import org.example.greenpointbackend.model.Enums.Title;
+import org.example.greenpointbackend.model.Enums.JobTitle;
 import org.example.greenpointbackend.model.Post;
 import org.example.greenpointbackend.security.AuthenticationRequest;
 import org.example.greenpointbackend.model.User;
@@ -58,8 +58,8 @@ public class AuthController {
                 .body("User already exists");
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(Role.ADMIN);
-        user.setTitle(Title.OPTICIAN);
+        user.setRole(Role.ADMIN); //todo fix det her
+        user.setJobTitle(JobTitle.OPTICIAN);
         userRepository.save(user);
         return ResponseEntity.ok("User created");
     }
@@ -82,7 +82,7 @@ public class AuthController {
 
         return ResponseEntity.ok(roles);
     }
-
+    //todo de her skal være andre steder
     @GetMapping("/role-newsfeed")
     public ResponseEntity<List<Map<String, Object>>> getRoleNews(@AuthenticationPrincipal UserPrincipal userPrincipal){
         List<String> roles = userPrincipal.getAuthorities().stream()
@@ -107,7 +107,7 @@ public class AuthController {
 
         return ResponseEntity.ok(foundNews);
     }
-
+    //todo de her skal være andre steder
     @GetMapping("/role-coursefeed")
     public ResponseEntity<List<Map<String, Object>>> getRoleCourses(@AuthenticationPrincipal UserPrincipal userPrincipal){
         List<String> roles = userPrincipal.getAuthorities().stream()

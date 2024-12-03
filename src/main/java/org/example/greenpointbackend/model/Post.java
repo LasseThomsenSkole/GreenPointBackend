@@ -2,6 +2,7 @@ package org.example.greenpointbackend.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.greenpointbackend.model.Enums.JobTitle;
 
 import java.time.LocalDate;
 
@@ -26,5 +27,5 @@ public class Post {
     private LocalDate date;
 
     @Column(nullable = false)
-    private String role;
+    private JobTitle jobTitle;
 }
