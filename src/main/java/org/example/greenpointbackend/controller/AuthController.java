@@ -41,12 +41,6 @@ public class AuthController {
     @Autowired
     private JwtUtil jwtUtil;
 
-    @Autowired
-    private PostService postService;
-
-    @Autowired
-    private CourseService courseService;
-
 
     @PostMapping("/register")
     public ResponseEntity<String> registerUser(@RequestBody User user) {
