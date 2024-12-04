@@ -21,8 +21,16 @@ public class PostService {
 
     public Page<Post> searchNews(String keyword, int page, int size) {
         Pageable pageable = PageRequest.of(page, size, Sort.by("date").descending());
+
+        // Handle the case where keyword is null or empty
+        if (keyword == null || keyword.trim().isEmpty()) {
+            return postRepository.findAll(pageable); // Return all posts
+        }
+
+        // Otherwise, perform a search
         return postRepository.searchNews(keyword, pageable);
     }
+
 
     public List<Post> findNewsByJobTitle(JobTitle jobTitle){
         return postRepository.findNewsByJobTitle(jobTitle);
