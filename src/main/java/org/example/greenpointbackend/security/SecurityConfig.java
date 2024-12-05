@@ -56,6 +56,7 @@ public class SecurityConfig {
                         .requestMatchers("/auth/admin").hasAuthority(Role.ADMIN.name())
                         .requestMatchers("/auth/login", "/auth/register").permitAll()
                         .requestMatchers("/news/**").permitAll() //todo lav det om til at kun være for user og op... det her er for test
+                        .requestMatchers("/user/**").permitAll() //todo lav det om til at kun være for user og op... det her er for test
                         .anyRequest().authenticated());
         return http.build();
     }
