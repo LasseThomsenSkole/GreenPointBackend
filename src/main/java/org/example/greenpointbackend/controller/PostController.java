@@ -1,5 +1,6 @@
 package org.example.greenpointbackend.controller;
 
+import org.example.greenpointbackend.model.Enums.JobTitle;
 import org.example.greenpointbackend.model.Post;
 import org.example.greenpointbackend.security.UserPrincipal;
 import org.example.greenpointbackend.service.PostService;
@@ -38,24 +39,20 @@ public class PostController {
         return ResponseEntity.ok(results);
     }
 
-    @GetMapping("/role-newsfeed")
+
+    @GetMapping("/newsfeed")
     public ResponseEntity<List<Map<String, Object>>> getRoleNews(@AuthenticationPrincipal UserPrincipal userPrincipal){
-        List<String> roles = userPrincipal.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+        JobTitle jobTitle = userPrincipal.getJobTitle();
 
-        List<Post> roleNews = new ArrayList<>();
-        for(String role : roles){
-            roleNews.addAll(postService.findPostsByRole(role)); //det her virker kun når findnewsbyrole i service er static??
-        }
+        List<Post> jobTitleNews = postService.findNewsByJobTitle(JobTitle.valueOf(jobTitle.name()));
 
-        List<Map<String, Object>> foundNews = roleNews.stream()
+        List<Map<String, Object>> foundNews = jobTitleNews.stream()
                 .distinct()
-                .map(news -> {
+                .map(post -> {
                     Map<String, Object> newsDetails = new HashMap<>();
-                    newsDetails.put("title", news.getTitle());
-                    newsDetails.put("date", news.getDate());
-                    newsDetails.put("description", news.getDescription());
+                    newsDetails.put("title", post.getTitle());
+                    newsDetails.put("date", post.getDate());
+                    newsDetails.put("description", post.getDescription());
                     return newsDetails;
                 })
                 .collect(Collectors.toList());

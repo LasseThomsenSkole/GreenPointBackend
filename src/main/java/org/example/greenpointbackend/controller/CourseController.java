@@ -1,6 +1,7 @@
 package org.example.greenpointbackend.controller;
 
 import org.example.greenpointbackend.model.Course;
+import org.example.greenpointbackend.model.Enums.JobTitle;
 import org.example.greenpointbackend.security.UserPrincipal;
 import org.example.greenpointbackend.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,18 +25,14 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @GetMapping("/role-coursefeed")
+    @GetMapping("/coursefeed")
     public ResponseEntity<List<Map<String, Object>>> getRoleCourses(@AuthenticationPrincipal UserPrincipal userPrincipal){
-        List<String> roles = userPrincipal.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority)
-                .collect(Collectors.toList());
+        JobTitle jobTitle = userPrincipal.getJobTitle();
 
-        List<Course> roleCourses = new ArrayList<>();
-        for(String role : roles){
-            roleCourses.addAll(courseService.findCourseByRole(role));
-        }
+        List<Course> jobTitleCourses = courseService.findCourseByRole(JobTitle.valueOf(jobTitle.name()));
 
-        List<Map<String, Object>> foundCourses = roleCourses.stream()
+
+        List<Map<String, Object>> foundCourses = jobTitleCourses.stream()
                 .distinct()
                 .map(course -> {
                     Map<String, Object> CourseDetails = new HashMap<>();
