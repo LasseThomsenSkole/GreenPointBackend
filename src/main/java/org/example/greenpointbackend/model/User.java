@@ -6,7 +6,9 @@ import lombok.*;
 import org.example.greenpointbackend.model.Enums.Role;
 import org.example.greenpointbackend.model.Enums.JobTitle;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -43,6 +45,6 @@ public class User {
     @Column(nullable = false)
     private int storeId;
 
-    /*@ManyToMany(mappedBy = "users")
-    private Set<Course> courses = new HashSet<>(); //hashset laver et table i stedet for linkedlist m hashmap*/
+    @ManyToMany(mappedBy = "users")
+    private List<Course> courses = new ArrayList<>();
 }

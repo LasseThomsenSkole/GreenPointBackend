@@ -32,4 +32,11 @@ public class CourseService {
         courseRepository.save(course);
     }
 
+    public List<Course> findCoursesByUserId(int userId){
+        return courseRepository.findCoursesByUserId(userId);
+    }
+
+    public List<User> findUsersByCourseId(int courseId){
+        return courseRepository.findUsersByCourseId(courseId);
+    }
 }
