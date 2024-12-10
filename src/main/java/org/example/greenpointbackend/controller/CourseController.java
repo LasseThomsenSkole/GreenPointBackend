@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -47,6 +45,18 @@ public class CourseController {
                 .collect(Collectors.toList());
 
         return ResponseEntity.ok(foundCourses);
+    }
+
+    @PostMapping("/{courseId}/register/{userId}")
+    public ResponseEntity<String> registerUser(@PathVariable int courseId, @PathVariable int userId){
+        courseService.registerUserToCourse(userId, courseId);
+        return ResponseEntity.ok("User registered for course");
+    }
+
+    @DeleteMapping("/{courseId}/unregister/{userId}")
+    public ResponseEntity<String> unregisterUser(@PathVariable int courseId, @PathVariable int userId){
+        courseService.unregisterUserFromCourse(userId, courseId);
+        return ResponseEntity.ok("User unregistered for course");
     }
 
 }

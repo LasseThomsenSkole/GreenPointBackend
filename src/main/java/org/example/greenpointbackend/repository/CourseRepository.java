@@ -8,7 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
     @Repository
-    public interface CourseRepository extends JpaRepository<Course, Long> {
+    public interface CourseRepository extends JpaRepository<Course, Integer> {
         List<Course> findCoursesByJobTitle(JobTitle jobTitle);
+
     }
 

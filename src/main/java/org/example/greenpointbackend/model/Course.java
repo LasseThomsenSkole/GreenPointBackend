@@ -6,6 +6,10 @@ import org.example.greenpointbackend.model.Enums.JobTitle;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -40,5 +44,7 @@ public class Course {
     @Column(nullable = false)
     private JobTitle jobTitle;
 
-
+    @ManyToMany
+    @JoinTable(name="user_course", joinColumns = @JoinColumn(name="course_id"), inverseJoinColumns = @JoinColumn(name="user_id"))
+    private List<User> users = new ArrayList<>();
 }
