@@ -6,6 +6,11 @@ import lombok.*;
 import org.example.greenpointbackend.model.Enums.Role;
 import org.example.greenpointbackend.model.Enums.JobTitle;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Entity
 @Data
 @Getter
@@ -35,11 +40,11 @@ public class User {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private JobTitle jobTitle; //todo skal være liste hvis der skal være flere
+    private JobTitle jobTitle; //todo skal være liste hvis der skal være flere - det skal det mici
 
     @Column(nullable = false)
     private int storeId;
 
-    /*@ManyToMany(mappedBy = "users")
-    private Set<Course> courses;*/
+    @ManyToMany(mappedBy = "users")
+    private List<Course> courses = new ArrayList<>();
 }

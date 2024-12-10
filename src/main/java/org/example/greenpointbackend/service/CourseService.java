@@ -2,12 +2,14 @@ package org.example.greenpointbackend.service;
 
 import org.example.greenpointbackend.model.Course;
 import org.example.greenpointbackend.model.Enums.JobTitle;
+import org.example.greenpointbackend.model.User;
 import org.example.greenpointbackend.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.example.greenpointbackend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,8 @@ import java.util.List;
 public class CourseService {
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private UserRepository userRepository;
 
 
     public List<Course> findCourseByRole(JobTitle jobTitle){
@@ -31,4 +35,24 @@ public class CourseService {
         return courseRepository.searchCourse(keyword, pageable);
     }
 
+    public void registerUserToCourse(int userId, int courseId){
+        User user = userRepository.findById(userId).orElseThrow(() ->new RuntimeException());
+        Course course = courseRepository.findById(courseId).orElseThrow(() ->new RuntimeException());
+        course.getUsers().add(user);
+        courseRepository.save(course);
+    }
+
+    public void unregisterUserFromCourse(int userId, int courseId){
+        Course course = courseRepository.findById(courseId).orElseThrow(()->new RuntimeException());
+        course.getUsers().remove(userId);
+        courseRepository.save(course);
+    }
+
+    public List<Course> findCoursesByUserId(int userId){
+        return courseRepository.findCoursesByUserId(userId);
+    }
+
+    public List<User> findUsersByCourseId(int courseId){
+        return courseRepository.findUsersByCourseId(courseId);
+    }
 }
